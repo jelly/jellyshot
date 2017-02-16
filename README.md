@@ -9,5 +9,7 @@ The amazing screenshot random name generator and uploader!
 
 ## Usage
 
+```
 $ ./jellyshot
 $  https://domain.com/~jelle/dump/AmazingBlackReindeer.png
+```
