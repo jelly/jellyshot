@@ -6,6 +6,7 @@ The amazing screenshot random name generator and uploader!
 
 * imagemagick
 * optipng (optional compression of screenshot)
+* ssh (for scp)
 
 ## Usage
 
