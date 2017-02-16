@@ -1,0 +1,7 @@
+#!/bin/bash
+# Config file for jellyshot
+
+
+SERVER=server.domain
+# SSH user
+USER=user
