@@ -3,5 +3,6 @@
 
 
 SERVER=server.domain
+SERVER_PATH=''
 # SSH user
 USER=user
