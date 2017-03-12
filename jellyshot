@@ -1,11 +1,13 @@
 #!/bin/bash
 
 # XXX: XDG_CONFIG_HOME
-if [[ -f "${HOME}/.config/jellyshot/config" ]];
+config="${HOME}/.config/jellyshot/config"
+
+if [[ -f ${config} ]];
 then
-  . "${HOME}/.config/jellyshot/config"
+  . "${config}"
 else
-  echo "No configuration available at ${HOME}/.config/jellyshot/config"
+  echo "No configuration available at ${config}"
   exit 1
 fi
 
