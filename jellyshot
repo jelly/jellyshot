@@ -11,7 +11,7 @@ trap '{ [[ -f "$file" ]] && rm -v "$file"; trap - INT; kill -INT $$; }' INT
 function rand_element () {
   local -a arr
   arr=("${!1}")
-  echo "${arr["$[RANDOM % ${#arr[@]}]"]}"
+  echo "${arr["$((RANDOM % ${#arr[@]}))"]}"
 }
 
 config="${XDG_CONFIG_HOME:-${HOME}/.config}/jellyshot/config"
