@@ -28,11 +28,11 @@ ANIMALS=(Aardvark Albatross Alligator Alpaca Ant Anteater Antelope Ape Armadillo
 COLORS=(Red Blue Green Cyan Blue Purple Yellow Lime Magenta Green Orange Brown Maroon Black Silver White)
 VOWELS=(Amazing Gigantic Enormous Huge Broad Ridiculous Shallow Silent Soft Fluffy Dusty Miniature Chucklesome Absurd Hilarious Droll Amusing Silly Hysterical Humorous Laughable Astounding Astonishing Stunning Bewildering Shocking Startling Breathtaking Disconcerting Fierce Evil Frightened Foolish Creepy Confused Arrogant Ashamed Angry Awful Cheerful Witty Proud Jolly Kind Gentle)
 
-vowel=$(rand_element "VOWELS[@]")
-color=$(rand_element "COLORS[@]")
-animal=$(rand_element "ANIMALS[@]")
+vowel="$(rand_element "VOWELS[@]")"
+colors="$(rand_element "COLORS[@]")"
+animal="$(rand_element "ANIMALS[@]")"
 
-name="${vowel}${color}${animal}.png"
+name="${vowel}${colors}${animal}.png"
 file="/tmp/$name"
 
 import "$file"
