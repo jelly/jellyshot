@@ -67,4 +67,4 @@ else
   printf "%s\n" "$url"
 fi
 
-unset config vowel animal colors name file url ANIMALS COLORS VOWELS &>/dev/null
+unset config vowel animal colors name url ANIMALS COLORS VOWELS &>/dev/null
