@@ -2,7 +2,9 @@
 # Config file for jellyshot
 
 
-SERVER=server.domain
+SERVER='server.domain'
 SERVER_PATH=''
+# Becomes: https://server.doman/tmp/<name>
+SUFFIX='tmp'
 # SSH user
-USER=user
+USER='user'
