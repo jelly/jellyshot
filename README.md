@@ -1,4 +1,4 @@
-# Jellyshot
+# Jellyshot [![Build Status](https://travis-ci.org/jelly/jellyshot.svg?branch=master)](https://travis-ci.org/jelly/jellyshot)
 
 The amazing screenshot random name generator and uploader!
 
