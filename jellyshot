@@ -9,14 +9,18 @@ trap '{ [[ -f "$file" ]] && rm -v "$file"; exit 1; }' ERR
 trap '{ [[ -f "$file" ]] && rm -v "$file"; trap - INT; kill -INT $$; }' INT
 
 function rand_element () {
-  local -a arr
-  arr=("${!1}")
-  echo "${arr["$((RANDOM % ${#arr[@]}))"]}"
+  if [[ "$#" -le 1 ]]; then
+    printf "%s\n" "No array passed to rand_element()"
+    exit 1
+  else
+    eval printf "%s" "\${$((RANDOM % ${#}))}"
+  fi
 }
 
 config="${XDG_CONFIG_HOME:-${HOME}/.config}/jellyshot/config"
 
 if [[ -f "$config" ]]; then
+  # shellcheck disable=SC1090
   . "$config"
 else
   printf "%s: %s\n" "No configuration available at" "$config"
@@ -27,17 +31,17 @@ ANIMALS=(Aardvark Albatross Alligator Alpaca Ant Anteater Antelope Ape Armadillo
 COLORS=(Red Blue Green Cyan Blue Purple Yellow Lime Magenta Green Orange Brown Maroon Black Silver White)
 VOWELS=(Amazing Gigantic Enormous Huge Broad Ridiculous Shallow Silent Soft Fluffy Dusty Miniature Chucklesome Absurd Hilarious Droll Amusing Silly Hysterical Humorous Laughable Astounding Astonishing Stunning Bewildering Shocking Startling Breathtaking Disconcerting Fierce Evil Frightened Foolish Creepy Confused Arrogant Ashamed Angry Awful Cheerful Witty Proud Jolly Kind Gentle)
 
-vowel="$(rand_element "VOWELS[@]")"
-colors="$(rand_element "COLORS[@]")"
-animal="$(rand_element "ANIMALS[@]")"
+vowels="$(rand_element "${VOWELS[@]}")"
+colors="$(rand_element "${COLORS[@]}")"
+animals="$(rand_element "${ANIMALS[@]}")"
 
-name="${vowel}${colors}${animal}.png"
+name="${vowels}${colors}${animals}.png"
 file="/tmp/$name"
 
 if type import &>/dev/null; then
   import "$file"
 else
-  printf "%s\n" '"import" not found in $PATH'
+  printf "%s\n" "'import' not found in \$PATH"
   exit 1
 fi
 
@@ -60,11 +64,9 @@ else
 fi
 
 if type xclip &>/dev/null; then
-  echo "$url" && printf "$url" | xclip -i -selection clipboard
+  printf "%s\n" "$url" && printf "%s" "$url" | xclip -i -selection clipboard
 elif type xsel &>/dev/null; then
-  echo "$url" && printf "$url" | xsel -ib
+  printf "%s\n" "$url" && printf "%s" "$url" | xsel -ib
 else
   printf "%s\n" "$url"
 fi
-
-unset config vowel animal colors name url ANIMALS COLORS VOWELS &>/dev/null
