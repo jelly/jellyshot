@@ -8,14 +8,14 @@ trap '{ cleanup; }' EXIT
 trap '{ cleanup; exit 1; }' ERR
 trap '{ cleanup; trap - INT; kill -INT $$; }' INT
 
-function cleanup() {
+function cleanup () {
   if [[ -f "$file" ]]; then
     echo
     rm -v "$file"
   fi
 }
 
-function rand_element() {
+function rand_element () {
   if [[ "$#" -le 1 ]]; then
     printf "%s\n" "No array passed to rand_element()"
     exit 1
@@ -23,9 +23,9 @@ function rand_element() {
   eval printf '%s' "\${$((RANDOM % ${#}))}"
 }
 
-ANIMALS=(Aardvark Albatross Alligator Alpaca Ant Anteater Antelope Ape Armadillo Baboon Badger Barracuda Bat Bear Beaver Bee Bison Boar Buffalo Galago Butterfly Camel Caribou Cat Caterpillar Cattle Chamois Cheetah Chicken Chimpanzee Chinchilla Chough Clam Cobra Cockroach Cod Cormorant Coyote Crab Crane Crocodile Crow Curlew Deer Dinosaur Dog Dogfish Dolphin Donkey Dotterel Dove Dragonfly Duck Dugong Dunlin Eagle Echidna Eel Eland Elephant Elephant seal Elk Emu Falcon Ferret Finch Fish Flamingo Fly Fox Frog Gaur Gazelle Gerbil Giant Panda Giraffe Gnat Gnu Goat Goose Goldfinch Goldfish Gorilla Goshawk Grasshopper Grouse Guanaco Guinea fowl Guinea pig Gull Hamster Hare Hawk Hedgehog Heron Herring Hippopotamus Hornet Horse Human Hummingbird Hyena Jackal Jaguar Jay Jellyfish Kangaroo Koala Komodo dragon Kouprey Kudu Lapwing Lark Lemur Leopard Lion Llama Lobster Locust Loris Louse Lyrebird Magpie Mallard Manatee Marten Meerkat Mink Mole Monkey Moose Mouse Mosquito Mule Narwhal Newt Nightingale Octopus Okapi Opossum Oryx Ostrich Otter Owl Ox Oyster Panther Parrot Partridge Peafowl Pelican Penguin Pheasant Pig Pigeon Pony Porcupine Porpoise Prairie Dog Quail Quelea Rabbit Raccoon Rail Ram Rat Raven Red deer Red panda Reindeer Rhinoceros Rook Ruff Salamander Salmon Sandpiper Sardine Scorpion Sea lion Sea Urchin Seahorse Seal Shark Sheep Shrew Shrimp Skunk Snail Snake Spider Squid Squirrel Starling Stingray Stinkbug Stork Swallow Swan Tapir Tarsier Termite Tiger Toad Trout Turkey Turtle Vicuña Viper Vulture Wallaby Walrus Wasp Water buffalo Weasel Whale Wolf Wolverine Wombat Woodcock Woodpecker Worm Wren Yak Zebra)
-COLORS=(Red Blue Green Cyan Blue Purple Yellow Lime Magenta Green Orange Brown Maroon Black Silver White)
-VOWELS=(Amazing Gigantic Enormous Huge Broad Ridiculous Shallow Silent Soft Fluffy Dusty Miniature Chucklesome Absurd Hilarious Droll Amusing Silly Hysterical Humorous Laughable Astounding Astonishing Stunning Bewildering Shocking Startling Breathtaking Disconcerting Fierce Evil Frightened Foolish Creepy Confused Arrogant Ashamed Angry Awful Cheerful Witty Proud Jolly Kind Gentle)
+ANIMALS=(Aardvark Albatross Alligator Alpaca Ant Anteater Antelope Ape Armadillo Ayeaye Babirusa Baboon Badger Barracuda Bat Bear Beaver Bee Bison Boar buffalo Buffalo Butterfly Camel Caribou Cat Caterpillar Cattle Chamois Cheetah Chicken Chimpanzee Chinchilla Chough Clam Cobra Cockroach Cod Corgi Cormorant Coyote Crab Crane Crocodile Crow Curlew Deer Dinosaur Dog Dogfish Dolphin Donkey Dotterel Dove Dragon Dragonfly Duck Dugong Dunlin Eagle Echidna Eel Eland Elephant Elk Emu Falcon Ferret Finch Fish Flamingo Fly Fossa Fowl Fox Frog Galago Gaur Gazelle Gerbil Gerenuk Giant Giraffe Gnat Gnu Goat Goldfinch Goldfish Goose Gorilla Goshawk Grasshopper Grouse Guanaco Guinea Gull Hamster Hare Hawk Hedgehog Heron Herring Hippopotamus Hornet Horse Human Hummingbird Hyena Jackal Jaguar Jay Jellyfish Joey Kangaroo Kiwi Koala Komodoa Kouprey Kudu Lamprey Lapwing Lark Lemur Leopard Lion Llama Lobster Locust Loris Louse Lyrebird Magpie Mallard Manatee Marten Meerkat Mink Mole Monkey Moose Mosquito Mouse Mule Narwhal Newt Nightingale Octopus Okapi Opossum Oryx Ostrich Otter Owl Ox Oyster Panda Panther Parrot Partridge Peafowl Pelican Penguin Pheasant pig Pig Pigeon Pony Porcupine Porpoise Prairie Quail Quelea Rabbit Raccoon Rail Ram Rat Raven Red Reindeer Rhinoceros Rook Ruff Salamander Salmon Sandpiper Sardine Scorpion Seahorse Seal Sealion Seaurchin Shark Sheep Shrew Shrimp Skunk Snail Snake Spider Squid Squirrel Starling Stingray Stinkbug Stork Swallow Swan Tapir Tarsier Termite Tiger Toad Trout Turkey Turtle Vicuña Viper Vulture Wallaby Walrus Wasp Water Weasel Whale Wolf Wolverine Wombat Woodcock Woodpecker Worm Wren Yak Zebra)
+COLORS=(Black Blue Blue Brown Cerulean Cyan Green Green Lime Magenta Maroon Orange Purple Red Silver Veridian Violet White Yellow)
+VOWELS=(Absurd Amazing Amusing Angry Arrogant Ashamed Astonishing Astounding Awful Beatific Bewildering Breathtaking Broad Bucolic Cheerful Chucklesome Confused Creepy Disconcerting Droll Dulcet Dusty Enormous Evil Fierce Fluffy Foolish Frightened Gentle Gigantic Gratuitous Hilarious Huge Humorous Hysterical Idyllic Jolly Kind Laughable Mellifluous Meretricious Miniature Numinous Proud Quaint Ridiculous Shallow Shocking Silent Silly Soft Startling Stunning Ubiquitous Witty)
 
 vowels="$(rand_element "${VOWELS[@]}")"
 colors="$(rand_element "${COLORS[@]}")"
