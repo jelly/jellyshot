@@ -63,10 +63,18 @@ case "$SUFFIX" in
 esac
 
 if [[ -z "$SERVER_PATH" ]]; then
-  scp "$file" "$SERVER:/home/$USER/public_html/dump/"
+  if [[ -z "$PORT" ]]; then
+    scp "$file" "$SERVER:/home/$USER/public_html/dump/"
+  else
+    scp -P "$PORT" "$file" "$SERVER:/home/$USER/public_html/dump/"
+  fi
   url="https://$SERVER$SUFFIX/~$USER/dump/$name"
 else
-  scp "$file" "$SERVER:$SERVER_PATH/"
+  if [[ -z "$PORT" ]]; then
+    scp "$file" "$SERVER:$SERVER_PATH/"
+  else
+    scp -P "$PORT" "$file" "$SERVER:$SERVER_PATH/"
+  fi
   url="https://$SERVER$SUFFIX/$name"
 fi
 
