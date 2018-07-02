@@ -3,8 +3,9 @@
 
 
 SERVER='server.domain'
+# PORT='22'
 SERVER_PATH=''
-# Becomes: https://server.doman/tmp/<name>
+# Becomes: `scp -P 22 <filename> https://server.domain/tmp/<name>`
 SUFFIX='tmp'
 # SSH user
 USER='user'
